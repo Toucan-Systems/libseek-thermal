@@ -329,3 +329,7 @@ uint16_t SeekCam::calc_mean_value(cv::Mat& img, cv::Point p, uint32_t dead_pixel
 
     return 0;
 }
+
+std::string SeekCam::get_ffc_filename() {
+    return m_ffc_filename;
+}

@@ -59,6 +59,8 @@ public:
      */
     virtual int frame_counter() = 0;
 
+    std::string get_ffc_filename();
+
 protected:
 
     SeekCam(int vendor_id, int product_id, uint16_t* buffer, size_t raw_height, size_t raw_width, cv::Rect roi, std::string ffc_filename);
