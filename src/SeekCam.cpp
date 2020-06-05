@@ -94,23 +94,27 @@ bool SeekCam::grab()
     return false;
 }
 
-void SeekCam::retrieve(cv::Mat& dst)
+void SeekCam::retrieve(cv::Mat &dst, bool ffc)
 {
+    /* apply offset */
+    m_raw_frame += m_offset;
+
     /* apply flat field calibration */
-    m_raw_frame += m_offset - m_flat_field_calibration_frame;
+    if (ffc) m_raw_frame -= m_flat_field_calibration_frame;
+
     /* filter out dead pixels */
     apply_dead_pixel_filter(m_raw_frame, dst);
     /* apply additional flat field calibration for degradient */
-    if (!m_additional_ffc.empty())
+    if (!m_additional_ffc.empty() and ffc)
         dst += m_offset - m_additional_ffc;
 }
 
-bool SeekCam::read(cv::Mat& dst)
+bool SeekCam::read(cv::Mat &dst, bool ffc)
 {
     if (!grab())
         return false;
 
-    retrieve(dst);
+    retrieve(dst, ffc);
 
     return true;
 }

@@ -40,7 +40,7 @@ public:
      *  Retrieve the last grabbed 14-bit frame
      *  Returns true on success
      */
-    void retrieve(cv::Mat& dst);
+    void retrieve(cv::Mat &dst, bool ffc = true);
 
     /*
      *  Convert a 14-bit thermal measurement to an
@@ -52,7 +52,7 @@ public:
      *  Read grabs and retrieves a frame
      *  Returns true on success
      */
-    bool read(cv::Mat& dst);
+    bool read(cv::Mat &dst, bool ffc = true);
 
     /*
      *  Get the frame counter value
