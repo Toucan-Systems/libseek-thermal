@@ -337,3 +337,8 @@ uint16_t SeekCam::calc_mean_value(cv::Mat& img, cv::Point p, uint32_t dead_pixel
 std::string SeekCam::get_ffc_filename() {
     return m_ffc_filename;
 }
+
+bool SeekCam::is_ffc_calibrated() {
+    bool has_ffc_file = !get_ffc_filename().empty();
+    return has_ffc_file;
+}

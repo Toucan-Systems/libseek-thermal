@@ -60,6 +60,7 @@ public:
     virtual int frame_counter() = 0;
 
     std::string get_ffc_filename();
+    bool is_ffc_calibrated();
 
 protected:
 
